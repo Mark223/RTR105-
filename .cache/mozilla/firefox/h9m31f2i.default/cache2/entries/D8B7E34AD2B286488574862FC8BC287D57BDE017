@@ -1,0 +1,457 @@
+
+
+
+
+
+
+<html>
+<head>
+  <title>ORTUS</title>
+  <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no;user-scalable=0;"/>
+  <meta name="HandheldFriendly" content="true">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/openam/css/styles.css" type="text/css" />
+  <link rel="stylesheet" href="https://ortus.rtu.lv/static/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+  <link rel="stylesheet" href="/openam/css/rtu.css" style="text/css" />
+  <style>
+  html {
+    -webkit-text-size-adjust: none
+  }
+  .ui-tabs .ui-tabs-nav {
+        padding: 0;
+    }
+
+    #container {
+        width: 150px;
+        height: 22px;
+        position: relative;
+        margin-bottom:10px;
+    }
+
+    #overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: white;
+        z-index: 10;
+        border-color: #848484 #ccc #ccc #848484;
+        border-style: solid;
+        border-width: 2px;
+        padding-left: 1px;
+        font-family: Verdana,Arial,sans-serif;
+    }
+
+    #PIN{
+        margin:1px;
+        height:12px;
+        width:100px;
+        font-size:13px;
+        letter-spacing:8px;
+    }
+
+    #hiddedPIN{
+        margin-top:2px;
+        display:block;
+        float:left;
+    }
+  </style>
+  <script type="text/javascript" src="/openam/js/browserVersion.js"></script>
+  <script type="text/javascript" src="/openam/js/auth.js"></script>
+  <script type="text/javascript" src="https://ortus.rtu.lv/static/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ortus.rtu.lv/static/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    writeCSS('/openam');
+
+    
+    var defaultBtn = 'Submit';
+    var elmCount = 0;
+
+    /** submit form with default command button */
+    function defaultSubmit() {
+        LoginSubmit(defaultBtn);
+    }
+
+    /**
+     * submit form with given button value
+     *
+     * @param value of button
+     */
+    function LoginSubmit(value) {
+        aggSubmit();
+        var hiddenFrm = document.forms['Login'];
+
+        if (hiddenFrm != null) {
+        hiddenFrm.elements['IDButton'].value = value;
+            if (this.submitted) {
+                alert("The request is currently being processed");
+            } else {
+                this.submitted = true;
+                hiddenFrm.submit();
+            }
+        }
+    }
+    
+
+    $(function(){
+        $("#tabs").tabs();
+
+    });
+  </script>
+</head>
+<body class="LogBdy" onload="placeCursorOnFirstElm();">
+  
+
+
+
+  
+  <div id="langbox">
+    <table>
+      <tr>
+        <td>
+          <a href="?locale=lv"><div id="flag_lv"></div></a>
+        </td>
+        <td>
+          <a href="?locale=en"><div id="flag_en"></div></a>
+        </td>
+     </tr>
+    </table>
+  </div>
+  <div id="logo" style="margin-top:20px">
+    <img id="img_logo" src="/openam/images/logo_lv.gif" alt="Rīgas Tehniskā universitāte" />
+  </div>
+
+  <div id="content" style="margin-top:20px">
+    <div id="tabs">
+      <ul>
+        <li><a href="#rtuid" id="rtuIdLink">RTU identitāte</a></li>
+        <!--li><a href="#mparaksts" id="mparakstsLink">Mobilais ID</a></li-->
+      </ul>
+      <div id="rtuid">
+        <p class="txtVrs" style="margin-bottom: 5px;">
+          
+            Lūdzu ievadiet savu lietotājvārdu un paroli
+          
+        </p>
+
+        <table align="center">
+
+          
+            
+              <script type="text/javascript">elmCount++;</script>
+
+              <!-- Login input field -->
+              
+
+              <!-- Password input field -->
+              
+
+              <!-- choice value display -->
+              
+
+              <!-- end of tiledCallbacks -->
+            
+              <script type="text/javascript">elmCount++;</script>
+
+              <!-- Login input field -->
+              <tr>
+                <form name="frm1" action="blank" onSubmit="defaultSubmit(); return false;" method="post">
+                <td style="text-align: right;">
+                  
+                  <label for="IDToken1"> Lietotājvārds: </label>
+                </td>
+                <td><input type="text" name="IDToken1" id="IDToken1" value="" class="TxtFld"></td>
+                </form>
+              </tr>
+
+              <!-- Password input field -->
+              
+
+              <!-- choice value display -->
+              
+
+              <!-- end of tiledCallbacks -->
+            
+              <script type="text/javascript">elmCount++;</script>
+
+              <!-- Login input field -->
+              
+
+              <!-- Password input field -->
+              <tr>
+                <form name="frm2" action="blank" onSubmit="defaultSubmit(); return false;" method="post">
+                <td style="text-align: right;">
+                  
+                  <label for="IDToken2"> Parole: </label>
+                </td>
+                <td><input type="password" name="IDToken2" id="IDToken2" value="" class="TxtFld"></td>
+                </form>
+              </tr>
+
+              <!-- choice value display -->
+              
+
+              <!-- end of tiledCallbacks -->
+            
+
+            <!-- end of validContent -->
+          
+
+          <!-- after login output message -->
+          
+
+          <!-- URL back to Login page -->
+          
+
+          <!-- customized image defined in properties file -->
+          
+
+          <!-- Submit button -->
+          <tr>
+            <td></td>
+            <td style="text-align: right;">
+              
+
+              
+                <input type="submit" style="margin-top:5px;margin-bottom:10px" name="Login.Submit" value="Pieteikties" onclick="javascript:LoginSubmit('Pieteikties')" />
+              
+            </td>
+          </tr>
+        </table>
+
+        <div id="registering" style="display:none">
+          <a href="https://services.rtu.lv/rtuid" id="register">Iegūt vai atjaunot paroli</a>
+        </div>
+
+        <div id="defaultauth" style="display:none;">
+            <div style="margin-top:5px">
+                <div style="margin-bottom:5px;color:#DF7401;font-size:11px;">* PIN koda iestatīšana/atjaunošana ir pieejama ORTUS portālā lietotāja profila sadaļā.</div>
+                <a href="https://id2.rtu.lv:443/openam/UI/Login?module=LDAP&locale=lv">Ielogoties ar lietotājvārdu un paroli</a>
+            </div>
+        </div>
+
+        
+          <form   name="Login"  action="/openam/UI/Login"  method="post">
+            <script type="text/javascript">
+              if (elmCount != null) {
+                  for ( var i = 0; i < elmCount; i++) {
+                      document.write("<input name=\"IDToken" + i + "\" type=\"hidden\">");
+                  }
+                  document.write("<input name=\"IDButton"  + "\" type=\"hidden\">");
+              }
+            </script>
+            <input type="hidden" name="goto" value="">
+            <input type="hidden" name="SunQueryParamsString" value="bW9kdWxlPUxEQVAmbG9jYWxlPWx2">
+            <input type="hidden" name="encoded" value="false">
+            <input type="hidden" name="locale" value="lv" />
+            <input type="hidden" name="module" value="LDAP" />
+          <input type="hidden" name="gx_charset" value="UTF-8"/></form>
+        
+      </div>
+    </div>
+    <div id="footer">
+      <img class="img_line" border="0" height="3" src="/openam/images/line.gif">
+      <p class="bottom" style="margin-top: 5px; margin-bottom: 0px;">IT lietotāju atbalsta centrs: e-pasts: <a href="mailto:it@rtu.lv">it@rtu.lv</a>, tālr.: 67089999</p>
+      <p class="bottom" style="margin-top: 0px; margin-bottom: 5px;">Rīgas Tehniskā universitāte, Kaļķu iela 1, Rīga LV-1658, Latvija</p>
+      <img class="img_line" border="0" height="3" src="/openam/images/line.gif">
+    </div>
+  </div>
+</body>
+
+  <script type="text/javascript">
+    $(function(){
+		var label = $("label[for='IDToken1']");
+		if (label.text().indexOf("PIN") >= 0){
+			document.getElementById("flag_lv").style.display = 'none';
+			document.getElementById("flag_en").style.display = 'none';
+			document.getElementById("registering").style.display = 'none';
+			document.getElementById("defaultauth").style.display = 'inline';
+		}else{
+			document.getElementById("registering").style.display = 'inline';
+		}
+    });
+
+
+    var PINlength=4;
+
+    function submitForm(){
+		aggSubmit();
+        document.forms["Login"].submit();
+    }
+
+    function createElements(){
+        var container = document.createElement("div");
+        container.setAttribute("id","container");
+
+        var inputNumber = document.createElement("input");
+        inputNumber.setAttribute("type","number");
+        inputNumber.setAttribute("pattern","[0-9]*");
+        inputNumber.setAttribute("id","PIN");
+        container.appendChild(inputNumber);
+
+        var overlay = document.createElement("div");
+        overlay.setAttribute("id","overlay");
+        container.appendChild(overlay);
+
+        var hiddedPIN = document.createElement("span");
+        hiddedPIN.setAttribute("id","hiddedPIN");
+        overlay.appendChild(hiddedPIN);
+
+        var cursor = document.createElement("span");
+        cursor.setAttribute("id","cursor");
+        cursor.innerHTML="|";
+        cursor.style.display="none";
+        overlay.appendChild(cursor);
+
+        var IDToken1 = document.getElementById("IDToken1");
+        IDToken1.parentNode.insertBefore(container,IDToken1);
+
+        var submit = document.getElementsByName("Login.Submit");
+        submit[0].addEventListener("focus", submitForm);
+
+        var pinControl = document.getElementById("PIN");
+        if (pinControl.addEventListener) {
+            pinControl.addEventListener("keyup", manageInput);
+        }
+        else {
+            pinControl.attachEvent("onkeyup", manageInput);
+        }
+
+        var  overlayControl = document.getElementById("overlay");
+        if (overlayControl.addEventListener) {
+            overlayControl.addEventListener("click", focusInput);
+        }
+        else {
+            overlayControl.attachEvent("onclick", focusInput);
+        }
+    }
+
+    function getStars(length){
+        var stars="";
+        for(var i=0;i<length;i++){
+            stars=stars+'<img src="/openam/images/star.png" width="16px" height="16px" />';
+        }
+        return stars;
+    }
+
+    function manageInput() {
+        var pinfield = document.getElementById("PIN");
+        var pin = pinfield.value;
+
+        var hiddedPIN = document.getElementById("hiddedPIN");
+
+        if(pin.length<=PINlength){
+            document.getElementById("IDToken1").value=pin;
+            hiddedPIN.innerHTML=getStars(pin.length);
+        }
+        else{
+            pinfield.value=pin.substr(0, PINlength);
+            hiddedPIN.value=getStars(PINlength);
+        }
+    }
+
+    function getBrowser(){
+        var browser="ie";
+        var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+            // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+        var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+        var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+            // At least Safari 3+: "[object HTMLElementConstructor]"
+        var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+        var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+
+        if(isOpera){
+            browser="opera";
+        }else if(isFirefox){
+            browser="firefox";
+        }else if(isSafari){
+            browser="safari";
+        }else if(isChrome){
+            browser="chrome";
+        }else if(isIE){
+            browser="ie";
+        }
+        return browser;
+    }
+
+    function showHide(name){
+        var element = document.getElementById(name);
+        var style = window.getComputedStyle(element);
+        var display = style.getPropertyValue('display');
+        if(display=="none"){
+            element.style.display = "inline";
+        }
+        else{
+            element.style.display = "none";
+        }
+    }
+
+    function focusInput(){
+        document.getElementById("PIN").focus();
+        if(getBrowser()!="ie" && getBrowser()!="safari"){
+            setInterval(function(){
+                showHide("cursor"); }
+            , 600);
+        }
+
+    }
+
+    function isMobileBrowser() {
+        if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function issetPINLabel(){
+        var result=false;
+        var labels = document.getElementsByTagName('label');
+        if(labels.length==1){
+            var text = labels[0].innerHTML;
+            var position = text.indexOf("PIN");
+            if(position!=-1){
+                result=true;
+            }
+        }
+        return result;
+    }
+
+	if(isMobileBrowser() && issetPINLabel()){
+        createElements();
+        showHide("IDToken1");
+    }
+</script>
+
+</html>
+u �Kߞ      X��jX��k=ur       9    :https://id2.rtu.lv/openam/UI/Login?module=LDAP&locale=lv necko:classified 1 strongly-framed 1 security-info FnhllAKWRHGAlo+ESXykKAAAAAAAAAAAwAAAAAAAAEaphjojH6pBabDSgSnsfLHeAAQAAgAAAAAAAAAAAAAAAAAAAAAB4vFIJp5wRkeyPxAQ9RJGKPqbqVvKO0mKuIl8ec8o/uhmCjImkVxP+7sgiYWmMt8FvcOXmlQiTNWFiWlrbpbqgwAAAAAAAAUtMIIFKTCCBBGgAwIBAgIQBUqfZ/V5jsjCjV3OuaUpxTANBgkqhkiG9w0BAQsFADBNMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5EaWdpQ2VydCBTSEEyIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTYwOTA1MDAwMDAwWhcNMTkxMjA0MTIwMDAwWjBiMQswCQYDVQQGEwJMVjENMAsGA1UECBMEUmlnYTENMAsGA1UEBxMEUmlnYTEiMCAGA1UEChMZUmlnYSBUZWNobmljYWwgdW5pdmVyc2l0eTERMA8GA1UEAwwIKi5ydHUubHYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDwF+XILQluIDINwPUucn4wRGijGqg1yp9MQrOm/8JNUgSa83QJcTXqLLiZXpnCkHQ2sG83EYjCcSqW6l1+AYPBhYIORwbbdx4R7t3OoZ38i1DMmjKN678kgeUcbABuI6yKUCJYQpuPKtYZxlaiyzlIEjTi33khTLvE2id918HUvyjhxxSUefhz1a65TVAncG8CsmLunLGcyD26DLSaWxrbL9KAZXqYbY22sKB5hsZti7IJ+qo0GkC2k8+sAx+TILELMhKN5xhB2Mxvh/bNGBw36OXmQbLLCL1YiBm0Q7yJx80vKa5ZjWvXZ8TM+87QwwHlCGFQB360ejTCc1jCUwP7AgMBAAGjggHuMIIB6jAfBgNVHSMEGDAWgBQPgGEcgjFh1S8o541GOLQs4cbZ4jAdBgNVHQ4EFgQUkROZFsGSDGaSTQIlskXXw2M37kowMgYDVR0RBCswKYIIKi5ydHUubHaCBnJ0dS5sdoIKaWQyLnJ0dS5sdoIJaWQucnR1Lmx2MA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwawYDVR0fBGQwYjAvoC2gK4YpaHR0cDovL2NybDMuZGlnaWNlcnQuY29tL3NzY2Etc2hhMi1nNS5jcmwwL6AtoCuGKWh0dHA6Ly9jcmw0LmRpZ2ljZXJ0LmNvbS9zc2NhLXNoYTItZzUuY3JsMEwGA1UdIARFMEMwNwYJYIZIAYb9bAEBMCowKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCAYGZ4EMAQICMHwGCCsGAQUFBwEBBHAwbjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tMEYGCCsGAQUFBzAChjpodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRTSEEyU2VjdXJlU2VydmVyQ0EuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBALhuulsBCgngtiyTiXLlCfhNXnbpIOfnMgdoZDU2z0Yc55EeL8FBKb+dkKRF4fCkZNIaDQxSZXN04tXNPhosL8Sl03xEYRxzeGW3rq62p0c6HFT4oM14UHp/mvx3wPdvV6Poh/ug/Poy6NnjK92COXZf32W2qnTa1p7upHJFcNGnQYAVOlQvl2aoQ1325NLHlo25+rXFVpj5AG22XBJzBsk3mfVT4CSlPrPG5EXG29jF3tO4C2OTHyD8Flb/8RAzDPYzovso1kX68kb2ZswvltOB9b2V5iFqHzT9Y3fRYd4wbSrwo27AOk5J73qwPlzw1+Hloc/AbrzQexpKlqHwK2HAMAADAAAAAAEBAAA= request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.10.1
+Date: Mon, 20 Feb 2017 06:44:58 GMT
+Content-Type: text/html;charset=UTF-8
+Cache-Control: private
+Pragma: no-cache
+Expires: 0
+AM_CLIENT_TYPE: genericHTML
+ original-response-headers Server: nginx/1.10.1
+Date: Mon, 20 Feb 2017 06:44:58 GMT
+Content-Type: text/html;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: private
+Pragma: no-cache
+Expires: 0
+AM_CLIENT_TYPE: genericHTML
+Set-Cookie: AMAuthCookie=AQIC5wM2LY4SfczD9eR4rcoZUKa5TRJ1ax-lGtQzX98vFiE.*AAJTSQACMDEAAlNLABMxMzQzMTQyMTU3ODcyNTgxNzEz*; Domain=.rtu.lv; Path=/
+Set-Cookie: amlbcookie=01; Domain=.rtu.lv; Path=/
+Set-Cookie: JSESSIONID=C1C65E95A0A280049D32B6601EF27C45; Path=/openam/; Secure; HttpOnly
+Set-Cookie: iPlanetDirectoryPro=""; Domain=.rtu.lv; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+ uncompressed-len 0 predictor::resource-count 14 predictor::https://id2.rtu.lv/openam/css/styles.css 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/static/jqueryui/1.8.18/themes/base/jquery-ui.css 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/css/rtu.css 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/js/browserVersion.js 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/js/auth.js 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/static/jquery/1.7.1/jquery.min.js 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/static/jqueryui/1.8.18/jquery-ui.min.js 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/images/logo_lv.gif 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/images/line.gif 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/css/css_ns6up.css 1,1,1487573098,4096 predictor::https://id2.rtu.lv/openam/images/top-bg.gif 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/ResourceServingWebapp/rs/flags/16/Latvia.png 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/ResourceServingWebapp/rs/flags/16/United%20Kingdom(Great%20Britain).png 1,1,1487573098,4096 predictor::https://ortus.rtu.lv/static/jqueryui/1.8.18/themes/base/images/ui-bg_flat_75_ffffff_40x100.png 1,1,1487573098,4096   5�
